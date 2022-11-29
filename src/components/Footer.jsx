@@ -2,19 +2,42 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 import Twitter from '../assets/twitterlogo.png'
 import Instagram from '../assets/instalogo.png'
+import styled from "styled-components";
+import { BsTwitter } from "react-icons/bs";
+import { BsInstagram } from "react-icons/bs";
 
 function Footer() {
   return (
-    <footer>
+    <StyledFooter>
         <p>Follow us:</p>
         <Link to="/">
-            <img src={Twitter} />
+            <p><BsTwitter /></p>
         </Link>
         <Link to="/">
-            <img src={Instagram} />
+            <p><BsInstagram /></p>
         </Link>
-    </footer>
+    </StyledFooter>
   )
 }
+
+const StyledFooter = styled.footer`
+  height: 5vh;
+  background-color: #676fa3;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  p{
+    color: white;
+    margin-left: 1vh;
+    margin-right: 1vh;
+  }
+
+  img{
+    width: 1.7vw;
+    height: 3.5vh;
+    margin: 0px 6px
+  }
+`;
 
 export default Footer

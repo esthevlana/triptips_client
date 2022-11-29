@@ -11,9 +11,12 @@ import AddArticle from "./components/AddArticle";
 import ArticleDetails from "./pages/ArticleDetails";
 import EditArticle from "./pages/EditArticle";
 
+import {GlobalStyles} from './components/styled/Global.styled'
+
 function App() {
   return (
     <div className="App">
+      <GlobalStyles />
       <Navbar />
 
       <Routes>

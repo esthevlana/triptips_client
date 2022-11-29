@@ -2,6 +2,7 @@ import { useState, useContext } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../contexts/auth.context";
+import {StyleDiv} from '../pages/Signup';
 
 function Login(props) {
   const [email, setEmail] = useState("");
@@ -34,10 +35,10 @@ function Login(props) {
   };
 
   return (
-    <div className="LoginPage">
+    <StyleDiv>
       <h1>Login</h1>
 
-      <form onSubmit={handleLoginSubmit}>
+      <form onSubmit={handleLoginSubmit} className="loginform">
         <label>Email:</label>
         <input type="email" name="email" value={email} onChange={handleEmail} />
 
@@ -52,7 +53,7 @@ function Login(props) {
         <button type="submit">Login</button>
       </form>
       {errorMessage && <p className="error-message">{errorMessage}</p>}
-    </div>
+    </StyleDiv>
   );
 }
 

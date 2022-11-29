@@ -3,6 +3,7 @@ import axios from "axios";
 import service from "../service/service";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../contexts/auth.context";
+import {StyleDiv} from '../pages/Signup';
 
 function AddArticle() {
   const [title, setTitle] = useState("");
@@ -99,8 +100,8 @@ function AddArticle() {
   }, [continentName]);
 
   return (
-    <div className="AddProject">
-      <form onSubmit={handleSubmit}>
+    <StyleDiv>
+      <form onSubmit={handleSubmit} className="loginform">
         <label htmlFor="title">Title</label>
         <input type="text" name="title" value={title} onChange={handleTitle} />
 
@@ -108,12 +109,12 @@ function AddArticle() {
         <textarea
           name="description"
           value={description}
-          cols="30"
+          cols="125"
           rows="10"
           onChange={handleDescription}
         ></textarea>
 
-        <label htmlFor="imageUrl">Profile Photo</label>
+        <label htmlFor="imageUrl">Select a picture</label>
         <input type="file" name="imageUrl" onChange={handleFileUpload} />
 
         <select name="continentName" onClick={handleContinentName}>
@@ -138,7 +139,7 @@ function AddArticle() {
 
         <button type="submit">Send</button>
       </form>
-    </div>
+    </StyleDiv>
   );
 }
 export default AddArticle;

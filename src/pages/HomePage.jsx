@@ -3,6 +3,9 @@ import "../App.css";
 import axios from "axios";
 import ArticleCard from "./ArticleCard";
 import { Link, useParams } from "react-router-dom";
+import Airplane from '../assets/airplaneline.png'
+import styled from "styled-components";
+import SearchBar from "../components/SearchBar";
 
 function HomePage() {
   const [article, setArticle] = useState([]);
@@ -29,11 +32,23 @@ function HomePage() {
 
   return (
     <>
+    <h1>Search for the next best trip<br/> of your life</h1>
+
+    <StyledSection><img src={Airplane} /></StyledSection>
+
+    <SearchBar placeholder="Look for a country"/>
+
       {article.map(article => {
         return <ArticleCard article={article} />
       })}
     </>
   );
 }
+
+const StyledSection = styled.section`
+  img{
+    width: 23vw;
+  }
+`
 
 export default HomePage;
