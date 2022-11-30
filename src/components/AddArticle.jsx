@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import service from "../service/service";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { AuthContext } from "../contexts/auth.context";
 import {StyleDiv} from '../pages/Signup';
 
@@ -17,6 +17,8 @@ function AddArticle() {
 
   const navigate = useNavigate();
   const { user } = useContext(AuthContext);
+
+  const { id } = useParams();
 
   const handleTitle = (e) => setTitle(e.target.value); 
 
@@ -55,13 +57,13 @@ function AddArticle() {
 
       const apiCall = await axios.post(
         `${process.env.REACT_APP_API_URL}/articlescreate`,
-        body
-      ); //the second argument is what you want to send to the backend
+        body); //the second argument is what you want to send to the backend
       //to clear the inputs of the form after the user click on submit:
+
 
       console.log(apiCall.data);
 
-      navigate("/");
+      navigate(`/review/create`);
     } catch (error) {
       console.log(error);
     }

@@ -1,7 +1,5 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
-import Twitter from '../assets/twitterlogo.png'
-import Instagram from '../assets/instalogo.png'
 import styled from "styled-components";
 import { BsTwitter } from "react-icons/bs";
 import { BsInstagram } from "react-icons/bs";
@@ -26,6 +24,10 @@ const StyledFooter = styled.footer`
   display: flex;
   align-items: center;
   justify-content: flex-end;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
 
   p{
     color: white;

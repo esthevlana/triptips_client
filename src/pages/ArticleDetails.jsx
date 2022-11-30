@@ -1,40 +1,46 @@
-import { useState, useEffect } from 'react'
-import {Link, useParams} from 'react-router-dom'
-import axios from 'axios'
+import { useState, useEffect } from "react";
+import { Link, useParams } from "react-router-dom";
+import axios from "axios";
+/* import { AuthContext } from "../contexts/auth.context"; */
 
 function ArticleDetails() {
-    const [article, setArticle] = useState(null);
+  const [article, setArticle] = useState(null);
 
-    const { id } = useParams();
+  const { id } = useParams();
 
-    const getArticle = async () => {
-        try {
-          const response = await axios.get(`${process.env.REACT_APP_API_URL}/articles/${id}`) 
-          setArticle(response.data);
-          console.log(response.data);
-
-        } catch (error) {
-            console.log(error)
+  const getArticle = async () => {
+    try {
+      const storedToken = localStorage.getItem("authToken");
+      const response = await axios.get(
+        `${process.env.REACT_APP_API_URL}/articles/${id}`,
+        {
+          headers: { Authorization: `Bearer ${storedToken}` },
         }
+      );
+      setArticle(response.data);
+      console.log(response.data);
+    } catch (err) {
+      console.log(err);
     }
+  };
 
-    useEffect (() => {
-        getArticle()
-    }, []);
+  useEffect(() => {
+    getArticle();
+  }, []);
 
   return (
     <div>
-            {article && (
-            <>
-              <h1>{article.title}</h1>
-              <p>{article.description}</p>
-              <p>{article.imageUrl}</p>
-              <p>{article.continentName}</p>
-              <p>{article.countryName}</p>
-            </>
-        )}
+      {article && (
+        <>
+          <h1>{article.title}</h1>
+          <p>{article.description}</p>
+          <p>{article.imageUrl}</p>
+          <p>{article.continentName}</p>
+          <p>{article.countryName}</p>
+        </>
+      )}
     </div>
-  )
+  );
 }
 
-export default ArticleDetails
+export default ArticleDetails;

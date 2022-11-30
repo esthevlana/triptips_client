@@ -3,6 +3,7 @@ import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../contexts/auth.context";
 import {StyleDiv} from '../pages/Signup';
+import italyBg from '../assets/italybg.jpg'
 
 function Login(props) {
   const [email, setEmail] = useState("");
@@ -36,9 +37,10 @@ function Login(props) {
 
   return (
     <StyleDiv>
-      <h1>Login</h1>
+      <img src={italyBg} />
 
       <form onSubmit={handleLoginSubmit} className="loginform">
+      <h1>Login</h1>
         <label>Email:</label>
         <input type="email" name="email" value={email} onChange={handleEmail} />
 
@@ -51,6 +53,7 @@ function Login(props) {
         />
 
         <button type="submit">Login</button>
+        <h3>Not a member yet? <Link to="/signup">Sign up!</Link></h3>
       </form>
       {errorMessage && <p className="error-message">{errorMessage}</p>}
     </StyleDiv>

@@ -15,7 +15,7 @@ function Navbar() {
  
       {loggedIn && (
         <>
-          <Link to="/profile">
+          <Link to={`/profile/${user._id}`}>
             <p>Profile</p>
           </Link>
 

@@ -39,7 +39,7 @@ function EditArticle() {
   const getArticle = async () => {
     try {
       const response = await axios.get(
-        `${process.env.REACT_APP_API_URL}/articles/${id}`
+        `${process.env.REACT_APP_API_URL}/articles/edit/${id}`
       );
       setTitle(response.data.title);
       setDescription(response.data.description);
@@ -59,7 +59,7 @@ function EditArticle() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.put(`${process.env.REACT_APP_API_URL}/articles/${id}`, {
+      await axios.put(`${process.env.REACT_APP_API_URL}/articles/edit/${id}`, {
         title,
         description,
         imageUrl,
