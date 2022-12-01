@@ -73,14 +73,14 @@ function ArticleDetails() {
       }
 
       //Check tourist place
-      if (response.data.favTouristPlace.includes(favTouristPlaceId)) {
+      if (response.data.favTouristPlaces.includes(favTouristPlaceId)) {
         setFavTouristPlace(true);
       } else {
         setFavTouristPlace(false);
       }
 
       //Check lodging
-      if (response.data.favLodging.includes(favLodgingId)) {
+      if (response.data.favLodgin.includes(favLodgingId)) {
         setFavLodging(true);
       } else {
         setFavLodging(false);
