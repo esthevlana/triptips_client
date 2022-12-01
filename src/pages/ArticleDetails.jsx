@@ -80,7 +80,7 @@ function ArticleDetails() {
       }
 
       //Check lodging
-      if (response.data.favLodging.includes(setFavLodgingId)) {
+      if (response.data.favLodging.includes(favLodgingId)) {
         setFavLodging(true);
       } else {
         setFavLodging(false);
