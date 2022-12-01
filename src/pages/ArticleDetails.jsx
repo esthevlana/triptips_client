@@ -21,7 +21,7 @@ function ArticleDetails() {
   const [favTouristPlace, setFavTouristPlace] = useState(false);
   const [favTouristPlaceId, setFavTouristPlaceId] = useState("");
   const [favLodging, setFavLodging] = useState(false);
-  const [favfavLodgingId, setFavLodgingId] = useState("");
+  const [favLodgingId, setFavLodgingId] = useState("");
 
   const getArticle = async () => {
     try {
