@@ -183,7 +183,7 @@ function ArticleDetails() {
               {article.continentName} - {article.countryName}
             </p>
             <p>{article.description}</p>
-            <p>{article.imageUrl}</p>
+            <img src={article.imgCountry} />
             <div className="favbuttons">
               <div onClick={addFavourite}>
                 {favourite ? (
