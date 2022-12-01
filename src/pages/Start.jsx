@@ -38,6 +38,7 @@ const StyledDivbg = styled.div`
     font-size: 400%;
     font-family: "Lobster", cursive;
     letter-spacing: 0.2em;
+    margin-top: 80px;
   }
 
   p {

@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../contexts/auth.context";
 import styled from "styled-components";
@@ -10,11 +10,11 @@ function Navbar() {
   return (
     <>
       {loggedIn && (
-        <StyleNavBar>
-          <Link to="/">
+        <StyleNavBar className="Navbar">
+          <Link to="/" className={({ isActive }) => (isActive ? 'selected' : '')}>
             <img src={logo} alt="logo home" />
           </Link>
-          <Link to="/addarticle">How was your trip?</Link>
+          <Link to="/addarticle" className={({ isActive }) => (isActive ? 'selected' : '')}>How was your trip?</Link>
           <Link to="/">Explore the world</Link>{" "}
           <Link to={`/profile/${user._id}`}>Profile</Link>
           {/* procurar como fazer um menu dropdown linkando à base de dados */}
