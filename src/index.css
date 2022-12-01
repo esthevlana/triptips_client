@@ -1,14 +1,19 @@
-@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;400&family=Lobster&family=Roboto:wght@100&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;400&family=Lobster&family=Roboto:wght@100&display=swap");
 
 body {
   margin: 0;
   padding: 0;
+
   box-sizing: border-box;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.App {
+  background-color: rgba(169, 176, 98, 0.6);
 }
 
 code {
@@ -47,3 +52,38 @@ code {
   align-items: center;
 }
 
+.DivCarousel {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  margin-top: 30px;
+}
+
+.containerImage {
+  height: 70vh;
+  width: 100vw;
+  background-image: url(https://res.cloudinary.com/dymq1r3y9/image/upload/v1669844141/movie-gallery/giorgia-doglioni-G2zjqUDkYSQ-unsplash_lrvctz.jpg);
+  background-size: cover;
+  max-width: 100vw !important;
+}
+
+.overlay {
+  width: 100%;
+  height: 70vh;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+nav {
+  position: absolute;
+  width: 100vw;
+}
+section {
+  padding-top: 50px;
+}
+
+.bgcarousel {
+  background-color: rgba(252, 249, 249, 0.2);
+  padding: 20px;
+}

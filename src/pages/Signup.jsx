@@ -115,8 +115,8 @@ export const StyleDiv = styled.div`
   }
 
   form button {
-    background: #a566e0;
-    border: 1px solid #a566e0;
+    background: #a9B062;
+    border: 1px solid #a9B062;;
     border-radius: 8px;
     color: #fff;
     cursor: pointer;
@@ -132,7 +132,7 @@ export const StyleDiv = styled.div`
 
   form button:hover {
     background: #fff;
-    color: #a566e0;
+    color: #a9B062;;
     transition: 0.3s ease background;
   }
 
@@ -157,6 +157,7 @@ export const StyleDiv = styled.div`
     height: 100vh;
     object-fit: cover;
   }
+
 `;
 
 export default Signup;

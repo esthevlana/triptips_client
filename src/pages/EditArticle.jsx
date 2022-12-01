@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
 import service from "../service/service";
+import {StyledArticleForm} from '../components/AddArticle';
+
 
 function EditArticle() {
   const [title, setTitle] = useState("");
@@ -54,7 +56,36 @@ function EditArticle() {
 
   useEffect(() => {
     getArticle();
+    getContinents();
   }, []);
+
+  const getContinents = async () => {
+    try {
+      const response = await axios.get(
+        `${process.env.REACT_APP_API_URL}/continents`
+      );
+      setContinents(response.data);
+      setContinentName("Oceania");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  //GET COUNTRIES FROM SELECTED CONTINENT
+  const getCountries = async () => {
+    try {
+      const response = await axios.get(
+        `${process.env.REACT_APP_API_URL}/countries/${continentName}`
+      );
+      setCountries(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    getCountries();
+  }, [continentName]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -62,7 +93,7 @@ function EditArticle() {
       await axios.put(`${process.env.REACT_APP_API_URL}/articles/edit/${id}`, {
         title,
         description,
-        imageUrl,
+        imgCountry: imageUrl,
         continentName,
         countryName,
       });
@@ -89,7 +120,7 @@ function EditArticle() {
   };
 
   return (
-    <div>
+    <StyledArticleForm>
       <h3>Edit your article</h3>
       <form onSubmit={handleSubmit}>
         <label htmlFor="title">Title</label>
@@ -104,19 +135,27 @@ function EditArticle() {
         ></textarea>
 
         <label htmlFor="imageUrl">Upload a photo</label>
-        <input type="file" name="imageUrl" value={imageUrl} onChange={handleFileUpload} />
+        <input type="file" name="imageUrl" onChange={handleFileUpload} />
 
-        <select name="continentName" value={continentName} onClick={handleContinentName}>
+        <select name="continentName" onClick={handleContinentName}>
           {continents.map((conti) => {
             return (
-              <option value={conti.continent} key={conti.continent}>
+              <option
+                value={conti.continent}
+                key={conti.continent}
+                selected={continentName == conti.continent}
+              >
                 {conti.continent}
               </option>
             );
           })}
         </select>
 
-        <select name="countryName" value={countryName} onClick={handleCountryName}>
+        <select
+          name="countryName"
+          value={countryName}
+          onClick={handleCountryName}
+        >
           {countries.map((country) => {
             return (
               <option value={country} key={country}>
@@ -130,7 +169,7 @@ function EditArticle() {
       </form>
 
       <button onClick={deleteArticle}>Delete your article</button>
-    </div>
+    </StyledArticleForm>
   );
 }
 

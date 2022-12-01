@@ -8,38 +8,31 @@ function Navbar() {
   const { loggedIn, user, logout } = useContext(AuthContext);
 
   return (
-    <StyleNavBar>
-      <Link to="/">
-        <img src={logo} alt="logo home" />
-      </Link>
-
+    <>
       {loggedIn && (
-        <>
-          <Link to="/addarticle">
-            <p>How was your trip?</p>
-          </Link>
+        <StyleNavBar>
           <Link to="/">
-            <p>Explore the world</p>
-          </Link>{" "}
-          <Link to={`/profile/${user._id}`}>
-            <p>Profile</p>
+            <img src={logo} alt="logo home" />
           </Link>
+          <Link to="/addarticle">How was your trip?</Link>
+          <Link to="/">Explore the world</Link>{" "}
+          <Link to={`/profile/${user._id}`}>Profile</Link>
           {/* procurar como fazer um menu dropdown linkando à base de dados */}
           <button onClick={logout}>Logout</button>
-        </>
+        </StyleNavBar>
       )}
 
       {!loggedIn && (
         <>
-          <Link to="/signup">
+          {/*           <Link to="/signup">
             <p>Signup</p>
           </Link>
           <Link to="/login">
             <p>Login</p>
-          </Link>
+          </Link> */}
         </>
       )}
-    </StyleNavBar>
+    </>
   );
 }
 

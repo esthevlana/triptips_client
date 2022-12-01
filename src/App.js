@@ -14,11 +14,10 @@ import Profile from "./pages/Profile";
 import UpdateProfile from "./pages/UpdateProfile";
 import AddReview from "./components/AddReview";
 import Start from "./pages/Start";
-/* import BootstrapCarousel from "./components/BootstrapCarousel"; */
+import BootstrapCarousel from "./components/BootstrapCarousel";
 
-import {GlobalStyles} from './components/styled/Global.styled'
+import { GlobalStyles } from "./components/styled/Global.styled";
 /* import 'bootstrap/dist/css/bootstrap.min.css'; */
-
 
 function App() {
   /* const [isAuthenticated, setIsAuthenticated] = useState(
@@ -38,17 +37,30 @@ function App() {
     <div className="App">
       <GlobalStyles />
       <Navbar />
-     {/*  <BootstrapCarousel /> */}
       <Routes>
-      {/* <Route
+        {/* <Route
           path="/"
           element={isAuthenticated
             ? <HomePage  />
             : <Navigate to="/start" replace />
           }
         /> */}
-        <Route path="/" element={<HomePage />} />
-        <Route path="/start" element={<Start />} />
+        <Route
+          path="/"
+          element={
+            <Private>
+              <HomePage />
+            </Private>
+          }
+        />
+        <Route
+          path="/start"
+          element={
+            <Anon>
+              <Start />
+            </Anon>
+          }
+        />
         <Route path="/articles/:id" element={<ArticleDetails />} />
         <Route path="/articles/edit/:id" element={<EditArticle />} />
         <Route path="/profile/:id" element={<Profile />} />

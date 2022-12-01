@@ -14,7 +14,6 @@ function Profile() {
   const [favLodgin, setFavLodgin] = useState("");
   const [favRestaurants, setFavRestaurants] = useState("");
 
-
   const getProfile = async () => {
     try {
       const storedToken = localStorage.getItem("authToken");
@@ -41,13 +40,19 @@ function Profile() {
     <StyledProfile>
       <br></br>
       <div className="userinfo">
-      {thisUser && (
-        <>
-          <h1>Welcome, {thisUser.username}</h1>
-          <Link to={`/profile-edit/${user._id}`}> Edit Profile </Link>
-          <img src={thisUser.imgUser} alt="profilepic" />
-        </>
-      )}
+        {thisUser && (
+          <>
+            <h1>Welcome, {thisUser.username}</h1>
+            <Link to={`/profile-edit/${user._id}`}> Edit Profile </Link>
+            <img src={thisUser.imgUser} alt="profilepic" />
+          </>
+        )}
+        <h4>My favourite articles</h4>
+        {thisUser &&
+          thisUser.favArticles &&
+          thisUser.favArticles.map((article) => {
+            return <p>{article.title}</p>;
+          })}
       </div>
     </StyledProfile>
   );
@@ -61,13 +66,13 @@ const StyledProfile = styled.div`
     max-width: 33vw;
     border-radius: 3px;
     padding: 15px;
-    margin:20px;
+    margin: 20px;
     font-size: 1em;
   }
 
-  img{
+  img {
     width: 10vw;
   }
-`
+`;
 
 export default Profile;

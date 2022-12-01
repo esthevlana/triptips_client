@@ -163,7 +163,7 @@ function AddArticle() {
 export const StyledArticleForm = styled.section`
 
 input[type=text], select, textarea {
-  width: 50%;
+  width: 60%;
   padding: 12px;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -186,8 +186,11 @@ label {
 
 .container {
   display: flex;
-  justify-content: center;
-  align-items: center;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	align-content: center;
 }
 
 button {
