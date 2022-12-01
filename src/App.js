@@ -7,7 +7,6 @@ import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import Private from "./components/Private";
 import Anon from "./components/Anon";
-import Footer from "./components/Footer";
 import AddArticle from "./components/AddArticle";
 import ArticleDetails from "./pages/ArticleDetails";
 import EditArticle from "./pages/EditArticle";
@@ -15,8 +14,10 @@ import Profile from "./pages/Profile";
 import UpdateProfile from "./pages/UpdateProfile";
 import AddReview from "./components/AddReview";
 import Start from "./pages/Start";
+/* import BootstrapCarousel from "./components/BootstrapCarousel"; */
 
 import {GlobalStyles} from './components/styled/Global.styled'
+/* import 'bootstrap/dist/css/bootstrap.min.css'; */
 
 
 function App() {
@@ -37,6 +38,7 @@ function App() {
     <div className="App">
       <GlobalStyles />
       <Navbar />
+     {/*  <BootstrapCarousel /> */}
       <Routes>
       {/* <Route
           path="/"
@@ -51,7 +53,7 @@ function App() {
         <Route path="/articles/edit/:id" element={<EditArticle />} />
         <Route path="/profile/:id" element={<Profile />} />
         <Route path="/profile-edit/:id" element={<UpdateProfile />} />
-        <Route path="/review/create" element={<AddReview />} />
+        <Route path="/review/create/:id" element={<AddReview />} />
         <Route
           path="/signup"
           element={
@@ -71,8 +73,6 @@ function App() {
 
         <Route path="/addarticle" element={<AddArticle />} />
       </Routes>
-
-      <Footer />
     </div>
   );
 }

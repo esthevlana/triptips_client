@@ -39,7 +39,7 @@ function EditArticle() {
   const getArticle = async () => {
     try {
       const response = await axios.get(
-        `${process.env.REACT_APP_API_URL}/articles/edit/${id}`
+        `${process.env.REACT_APP_API_URL}/articles/${id}`
       );
       setTitle(response.data.title);
       setDescription(response.data.description);
@@ -81,7 +81,7 @@ function EditArticle() {
 
   const deleteArticle = async () => {
     try {
-      await axios.delete(`${process.env.REACT_APP_API_URL}/articles/${id}`);
+      await axios.delete(`${process.env.REACT_APP_API_URL}/article/${id}`);
       navigate("/");
     } catch (error) {
       console.log(error);

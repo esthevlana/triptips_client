@@ -32,7 +32,7 @@ function Signup(props) {
   };
 
   return (
-    <StyleDiv>
+    <StyleDiv className="SignupPage">
       <img src={egyptBg} />
 
       <form onSubmit={handleSignupSubmit} className="loginform">
@@ -70,12 +70,6 @@ function Signup(props) {
 export const StyleDiv = styled.div`
   .loginform {
     background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    justify-content: center;
-    align-items: center;
-    align-content: center;
     text-align: center;
     padding: 50px 0;
     padding-top: 10px;
@@ -83,14 +77,15 @@ export const StyleDiv = styled.div`
   }
 
   form {
-    margin: 20px auto;
     text-align: center;
     width: 80vw;
     position: absolute;
-    top: 0;
+    display: -ms-flexbox;
     display: flex;
+    -ms-flex-direction: column;
     flex-direction: column;
-    justify-content: center;
+    -ms-flex-pack: center;
+    -ms-flex-align: center;
     align-items: center;
     color: white;
   }

@@ -11,12 +11,14 @@ function Start() {
       <div>
         <h1>Trip Tips</h1>
         <p>Join our community to plan your next trip</p>
-        <section>
-          <Link to="/signup">Sign up</Link>
-        </section>
-        <section>
-          <Link to="/login">LogIn</Link>
-        </section>
+        <div className="buttonflexbox">
+          <section>
+            <Link to="/signup">Sign up</Link>
+          </section>
+          <section>
+            <Link to="/login">Login</Link>
+          </section>
+        </div>
       </div>
     </StyledDivbg>
   );
@@ -33,12 +35,14 @@ const StyledDivbg = styled.div`
   }
 
   h1 {
-    font-size: 300%;
-    animation-delay: -2s;
+    font-size: 400%;
+    font-family: "Lobster", cursive;
+    letter-spacing: 0.2em;
   }
 
   p {
     font-size: 150%;
+    margin: 2em;
   }
 
   div {
@@ -79,6 +83,15 @@ const StyledDivbg = styled.div`
   section:hover {
     transform: scale(1.2);
     transition: all 0.3s ease-in-out 0.1s;
+  }
+
+  .buttonflexbox {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    align-content: stretch;
   }
 `;
 

@@ -1,32 +1,30 @@
-import { Link } from 'react-router-dom';
-import { useContext } from 'react';
-import { AuthContext } from '../contexts/auth.context';
+import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../contexts/auth.context";
 import styled from "styled-components";
+import logo from "../assets/planelogo.png";
 
 function Navbar() {
+  const { loggedIn, user, logout } = useContext(AuthContext);
 
-    const { loggedIn, user, logout } = useContext(AuthContext);
-
-    return (
+  return (
     <StyleNavBar>
       <Link to="/">
-        <p>Home</p>
+        <img src={logo} alt="logo home" />
       </Link>
- 
+
       {loggedIn && (
         <>
-          <Link to={`/profile/${user._id}`}>
-            <p>Profile</p>
-          </Link>
-
           <Link to="/addarticle">
             <p>How was your trip?</p>
           </Link>
-
           <Link to="/">
-            <p>Community</p>
-          </Link> {/* procurar como fazer um menu dropdown linkando à base de dados */}
-
+            <p>Explore the world</p>
+          </Link>{" "}
+          <Link to={`/profile/${user._id}`}>
+            <p>Profile</p>
+          </Link>
+          {/* procurar como fazer um menu dropdown linkando à base de dados */}
           <button onClick={logout}>Logout</button>
         </>
       )}
@@ -46,47 +44,55 @@ function Navbar() {
 }
 
 const StyleNavBar = styled.nav`
-height: 7vh;
-background-color: #676fa3;
-display: flex;
-justify-content: space-evenly;
-align-items: center;
-
-img{
-  height: 5vh;
-}
-
-ul{
-  list-style: none;
+  height: 7vh;
+  background-color: rgba(0, 0, 0, 0.1);
   display: flex;
+  justify-content: space-evenly;
   align-items: center;
-}
 
-li{
-  margin-right: 2vh;
-}
+  img {
+    height: 7vh;
+  }
+  ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+  }
+  li {
+    margin-right: 2vh;
+  }
+  a {
+    text-decoration: none;
+    color: white;
+  }
+  a:hover,
+  .active {
+    color: white;
+  }
+  p {
+    transform: scale(1);
+    transition: all 0.3s ease-in-out 0.2s;
+  }
+  p:hover {
+    transform: scale(1.1);
+    transition: all 0.3s ease-in-out 0.1s;
+    border-bottom: white 1px solid;
+    line-height: 25px;
+  }
 
-a{
-  text-decoration: none;
-  color: white;
-}
+  button {
+    background-color: rgba(0, 0, 0, 0.4);
+    color: white;
+    border: none;
+    padding: 10px;
+    transform: scale(1);
+    transition: all 0.3s ease-in-out 0.2s;
+  }
 
-a:hover,
-.active{
-  color: white;
-}
-
-p {
-  transform: scale(1);
-  transition: all 0.3s ease-in-out 0.2s;
-}
-
-p:hover{
-  transform: scale(1.1);
-  transition: all 0.3s ease-in-out 0.1s;
-  border-bottom: white 1px solid;
-  line-height: 25px;
-}
+  button:hover {
+    transform: scale(1.1);
+    transition: all 0.3s ease-in-out 0.1s;
+  }
 `;
- 
+
 export default Navbar;

@@ -36,8 +36,8 @@ function Login(props) {
   };
 
   return (
-    <StyleDiv>
-      <img src={italyBg} />
+    <StyleDiv className="SignupPage">
+      <img src={italyBg} alt='background image'/>
 
       <form onSubmit={handleLoginSubmit} className="loginform">
       <h1>Login</h1>

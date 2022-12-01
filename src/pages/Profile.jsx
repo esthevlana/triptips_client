@@ -2,12 +2,18 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../contexts/auth.context";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
+import styled from "styled-components";
 import service from "../service/service";
 
 function Profile() {
   const { user } = useContext(AuthContext);
   const { id } = useParams();
   const [thisUser, setThisUser] = useState(null);
+  const [favArticles, setFavArticles] = useState("");
+  const [favTouristPlaces, setFavTouristPlaces] = useState("");
+  const [favLodgin, setFavLodgin] = useState("");
+  const [favRestaurants, setFavRestaurants] = useState("");
+
 
   const getProfile = async () => {
     try {
@@ -32,19 +38,36 @@ function Profile() {
   console.log(user);
 
   return (
-    <div>
+    <StyledProfile>
       <br></br>
+      <div className="userinfo">
       {thisUser && (
         <>
           <h1>Welcome, {thisUser.username}</h1>
-          <h1>{thisUser.email}</h1>
-          <img src={thisUser.imgUser} alt="profilepic" />
-
           <Link to={`/profile-edit/${user._id}`}> Edit Profile </Link>
+          <img src={thisUser.imgUser} alt="profilepic" />
         </>
       )}
-    </div>
+      </div>
+    </StyledProfile>
   );
 }
+
+const StyledProfile = styled.div`
+  color: white;
+
+  .userinfo {
+    background-color: grey;
+    max-width: 33vw;
+    border-radius: 3px;
+    padding: 15px;
+    margin:20px;
+    font-size: 1em;
+  }
+
+  img{
+    width: 10vw;
+  }
+`
 
 export default Profile;

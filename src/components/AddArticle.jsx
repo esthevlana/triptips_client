@@ -3,7 +3,7 @@ import axios from "axios";
 import service from "../service/service";
 import { useNavigate, useParams } from "react-router-dom";
 import { AuthContext } from "../contexts/auth.context";
-import {StyleDiv} from '../pages/Signup';
+import styled from "styled-components";
 
 function AddArticle() {
   const [title, setTitle] = useState("");
@@ -20,7 +20,7 @@ function AddArticle() {
 
   const { id } = useParams();
 
-  const handleTitle = (e) => setTitle(e.target.value); 
+  const handleTitle = (e) => setTitle(e.target.value);
 
   const handleDescription = (e) => setDescription(e.target.value);
 
@@ -57,13 +57,13 @@ function AddArticle() {
 
       const apiCall = await axios.post(
         `${process.env.REACT_APP_API_URL}/articlescreate`,
-        body); //the second argument is what you want to send to the backend
+        body
+      ); //the second argument is what you want to send to the backend
       //to clear the inputs of the form after the user click on submit:
-
 
       console.log(apiCall.data);
 
-      navigate(`/review/create`);
+      navigate(`/review/create/${apiCall.data._id}`);
     } catch (error) {
       console.log(error);
     }
@@ -76,6 +76,7 @@ function AddArticle() {
         `${process.env.REACT_APP_API_URL}/continents`
       );
       setContinents(response.data);
+      setContinentName("Oceania");
     } catch (error) {
       console.log(error);
     }
@@ -102,46 +103,97 @@ function AddArticle() {
   }, [continentName]);
 
   return (
-    <StyleDiv>
+    <StyledArticleForm className="container">
       <form onSubmit={handleSubmit} className="loginform">
-        <label htmlFor="title">Title</label>
-        <input type="text" name="title" value={title} onChange={handleTitle} />
+            <h3>How was your experience?</h3>
+            <label htmlFor="title"></label>
+            <input
+              type="text"
+              name="title"
+              value={title}
+              onChange={handleTitle}
+              placeholder="Title"
+            />
 
-        <label htmlFor="description">Description</label>
-        <textarea
-          name="description"
-          value={description}
-          cols="125"
-          rows="10"
-          onChange={handleDescription}
-        ></textarea>
+            <label htmlFor="description"></label>
+            <textarea
+              name="description"
+              value={description}
+              placeholder="Tell us everything"
+              cols="125"
+              rows="10"
+              onChange={handleDescription}
+            ></textarea>
 
-        <label htmlFor="imageUrl">Select a picture</label>
-        <input type="file" name="imageUrl" onChange={handleFileUpload} />
+            <label htmlFor="imageUrl">Select a picture</label>
+            <input type="file" name="imageUrl" onChange={handleFileUpload} />
 
-        <select name="continentName" onClick={handleContinentName}>
-          {continents.map((conti) => {
-            return (
-              <option value={conti.continent} key={conti.continent}>
-                {conti.continent}
-              </option>
-            );
-          })}
-        </select>
+            <label htmlFor="continentName">Select the Continente</label>
+            <select name="continentName" onClick={handleContinentName}>
+              {continents.map((conti) => {
+                return (
+                  <option
+                    value={conti.continent}
+                    key={conti.continent}
+                    selected={continentName == conti.continent}
+                  >
+                    {conti.continent}
+                  </option>
+                );
+              })}
+            </select>
 
-        <select name="countryName" onClick={handleCountryName}>
-          {countries.map((country) => {
-            return (
-              <option value={country} key={country}>
-                {country}
-              </option>
-            );
-          })}
-        </select>
+            <label htmlFor="continentName">Select the Country</label>  
+            <select name="countryName" onClick={handleCountryName}>
+              {countries.map((country) => {
+                return (
+                  <option value={country} key={country}>
+                    {country}
+                  </option>
+                );
+              })}
+            </select>
 
-        <button type="submit">Send</button>
+            <button type="submit">Send</button>
       </form>
-    </StyleDiv>
+    </StyledArticleForm>
   );
 }
+
+export const StyledArticleForm = styled.section`
+
+input[type=text], select, textarea {
+  width: 50%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+  padding: 20px;
+  width: 80vw;
+}
+
+label {
+  padding: 12px 12px 12px 0;
+  display: inline-block;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+button {
+  margin-top: 15px;
+}
+
+`
+
 export default AddArticle;

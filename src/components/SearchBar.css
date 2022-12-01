@@ -1,27 +1,28 @@
-/* .searchInputs {
-    margin-top: 105px;
+.searchInputs {
+    margin-top: 40px;
     display: flex;
+    justify-content: center;
   }
   
   .search input {
     background-color: white;
-    border: 0;
-    border-radius: 2px;
+    border: 1px solid black;
+    border-radius: 5px;
     border-top-right-radius: 0px;
     border-bottom-right-radius: 0px;
-    font-size: 18px;
+    font-size: 1em;
     padding: 15px;
     height: 30px;
-    width: 300px;
+    width: 50%;
   }
   
   .searchIcon {
     height: 60px;
-    width: 50px;
+    width: 30px;
     background-color: white;
     display: grid;
     place-items: center;
-  } */
+  }
   
 /*   input:focus {
     outline: none;
