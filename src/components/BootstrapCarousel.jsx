@@ -1,13 +1,11 @@
 import React from 'react'
 import Carousel from 'react-bootstrap/Carousel';
-import tajmahal from "../assets/tajmahal.jpg";
-import eiffeltower from "../assets/eiffeltower.jpg";
-import greek from "../assets/greek.jpg";
-import domluisbridge from "../assets/domluisbridge.jpg";
+import cuba from "../assets/cuba.jpg";
+import italy from "../assets/italy.jpg";
 import Image from 'react-bootstrap/Image'
-import operahouse from "../assets/sydneyoperahouse.png";
-import versailles from "../assets/versailles.png";
-import zocalomexico from "../assets/zocalomexico.png";
+import louvre from "../assets/louvre.jpg";
+import riodejaneiro from "../assets/riodejaneiro.jpg";
+import uruguay from "../assets/uruguay.jpg";
 
 
 function BootstrapCarousel() {
@@ -18,7 +16,7 @@ function BootstrapCarousel() {
       <Carousel.Item>
         <Image fluid
           className="d-block w-100"
-          src={domluisbridge}
+          src={cuba}
           alt="First slide"
         />
         <Carousel.Caption>
@@ -28,7 +26,7 @@ function BootstrapCarousel() {
       <Carousel.Item>
         <img
           className="d-block w-100"
-          src={tajmahal}
+          src={italy}
           alt="Second slide"
         />
 
@@ -39,7 +37,7 @@ function BootstrapCarousel() {
       <Carousel.Item>
         <img
           className="d-block w-100"
-          src={zocalomexico}
+          src={louvre}
           alt="Third slide"
         />
 
@@ -52,7 +50,7 @@ function BootstrapCarousel() {
       <Carousel.Item>
         <img
           className="d-block w-100"
-          src={operahouse}
+          src={riodejaneiro}
           alt="Third slide"
         />
 
@@ -65,7 +63,7 @@ function BootstrapCarousel() {
       <Carousel.Item>
         <img
           className="d-block w-100"
-          src={versailles}
+          src={uruguay}
           alt="Third slide"
         />
 

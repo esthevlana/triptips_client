@@ -2,8 +2,8 @@ import { useState, useContext } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../contexts/auth.context";
-import {StyleDiv} from '../pages/Signup';
-import italyBg from '../assets/italybg.jpg'
+import { StyleDiv } from "../pages/Signup";
+import italyBg from "../assets/italybg.jpg";
 
 function Login(props) {
   const [email, setEmail] = useState("");
@@ -37,10 +37,10 @@ function Login(props) {
 
   return (
     <StyleDiv className="SignupPage">
-      <img src={italyBg} alt='background image'/>
+      <img src={italyBg} alt="background image" />
 
       <form onSubmit={handleLoginSubmit} className="loginform">
-      <h1>Login</h1>
+        <h1>Login</h1>
         <label>Email:</label>
         <input type="email" name="email" value={email} onChange={handleEmail} />
 
@@ -53,7 +53,9 @@ function Login(props) {
         />
 
         <button type="submit">Login</button>
-        <h3>Not a member yet? <Link to="/signup">Sign up!</Link></h3>
+        <p>
+          Not a member yet? <Link to="/signup">Sign up!</Link>
+        </p>
       </form>
       {errorMessage && <p className="error-message">{errorMessage}</p>}
     </StyleDiv>
