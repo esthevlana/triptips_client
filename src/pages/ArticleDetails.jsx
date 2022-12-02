@@ -183,7 +183,7 @@ function ArticleDetails() {
               {article.continentName} - {article.countryName}
             </p>
             <p>{article.description}</p>
-            <img src={article.imgCountry} />
+            <img src={article.imgCountry} className="imgarticle"/>
             <div className="favbuttons">
               <div onClick={addFavourite}>
                 {favourite ? (
@@ -320,6 +320,10 @@ export const StyleDetails = styled.div`
     background-color: rgba(169, 176, 98, 0.6);
     padding: 9px;
     margin: 4px;
+  }
+
+  .imgarticle img {
+    width: 40%;
   }
 `;
 
