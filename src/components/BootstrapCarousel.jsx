@@ -20,7 +20,7 @@ function BootstrapCarousel() {
           alt="First slide"
         />
         <Carousel.Caption>
-          <h3>Cuba</h3>
+          <h1>Cuba</h1>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
@@ -31,7 +31,7 @@ function BootstrapCarousel() {
         />
 
         <Carousel.Caption>
-          <h3>Italy</h3>
+          <h1>Italy</h1>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
@@ -42,9 +42,9 @@ function BootstrapCarousel() {
         />
 
         <Carousel.Caption>
-          <h3>
+          <h1>
             France
-          </h3>
+          </h1>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
@@ -55,9 +55,9 @@ function BootstrapCarousel() {
         />
 
         <Carousel.Caption>
-          <h3>
+          <h1>
             Rio de Janeiro
-          </h3>
+          </h1>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
@@ -68,9 +68,9 @@ function BootstrapCarousel() {
         />
 
         <Carousel.Caption>
-          <h3>
+          <h1>
             Uruguay
-          </h3>
+          </h1>
         </Carousel.Caption>
       </Carousel.Item>
     </Carousel>
