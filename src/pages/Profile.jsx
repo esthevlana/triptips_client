@@ -42,7 +42,7 @@ function Profile() {
       <div className="userinfo">
         {thisUser && (
           <>
-            <h1>Welcome, {thisUser.username}</h1>
+            <h4>Welcome, {thisUser.username}</h4>
             <Link to={`/profile-edit/${user._id}`}> Edit Profile </Link>
             <img src={thisUser.imgUser} alt="profilepic" />
           </>
