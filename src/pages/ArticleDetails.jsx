@@ -2,6 +2,7 @@ import { useState, useEffect, useContext } from "react";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import { AuthContext } from "../contexts/auth.context";
+import { IconContext } from "react-icons";
 import { MdOutlineFavoriteBorder } from "react-icons/md";
 import { MdOutlineFavorite } from "react-icons/md";
 import { AiOutlinePlusCircle } from "react-icons/ai";
@@ -178,43 +179,61 @@ function ArticleDetails() {
         {article && (
           <>
             <h1>{article.title}</h1>
-            <h1>{article.creator.username}</h1>
+            <h5>by {article.creator.username}</h5>
             <p className="location">
               {article.continentName} - {article.countryName}
             </p>
             <p>{article.description}</p>
-            <img src={article.imgCountry} className="imgarticle"/>
+            <img src={article.imgCountry} />
             <div className="favbuttons">
               <div onClick={addFavourite}>
                 {favourite ? (
-                  <p>
-                    <AiFillPlusCircle />
-                  </p>
+                  <IconContext.Provider
+                    value={{ className: "global-class-name", size: "2em", color: "#6dc993" }}
+                  >
+                    <div>
+                      <AiFillPlusCircle />
+                    </div>
+                  </IconContext.Provider>
                 ) : (
-                  <p>
-                    <AiOutlinePlusCircle />
-                  </p>
+                  <IconContext.Provider
+                    value={{ className: "global-class-name", size: "2em", color: "#6dc993" }}
+                  >
+                    <div>
+                      <AiOutlinePlusCircle />
+                    </div>
+                  </IconContext.Provider>
                 )}
               </div>
               <div onClick={addLike}>
                 {liked ? (
-                  <p>
-                    <MdOutlineFavorite />
-                  </p>
+                  <IconContext.Provider
+                    value={{ className: "global-class-name", size: "2em", color: "#fb3958" }}
+                  >
+                    <div>
+                      <MdOutlineFavorite />
+                    </div>
+                  </IconContext.Provider>
                 ) : (
-                  <p>
-                    <MdOutlineFavoriteBorder />
-                  </p>
+                  <IconContext.Provider
+                    value={{ className: "global-class-name", size: "2em", color: "#fb3958" }}
+                  >
+                    <div>
+                      <MdOutlineFavoriteBorder />
+                    </div>
+                  </IconContext.Provider>
                 )}
               </div>
             </div>
             <>
               <h5>Places I like the most</h5>
               <div className="reviewcontainer">
+                <h4>Where to stay</h4>
+                <hr />
                 {article.lodgin.map((review) => {
                   return (
                     <div>
-                      <h4>{review.name}</h4>
+                      <h5>{review.name}</h5>
                       <p>{review.comment}</p>
                       <p>{review.rating}</p>
                       <div onClick={() => addLodging(review._id)}>
@@ -228,15 +247,18 @@ function ArticleDetails() {
                           </p>
                         )}
                       </div>
+                      <hr />
                     </div>
                   );
                 })}
               </div>
               <div className="reviewcontainer">
+                <h4>Where to eat</h4>
+                <hr />
                 {article.restaurants.map((review) => {
                   return (
                     <div>
-                      <h4>{review.name}</h4>
+                      <h5>{review.name}</h5>
                       <p>{review.comment}</p>
                       <p>{review.rating}</p>
                       <div onClick={() => addRestaurant(review._id)}>
@@ -250,15 +272,18 @@ function ArticleDetails() {
                           </p>
                         )}
                       </div>
+                      <hr />
                     </div>
                   );
                 })}
               </div>
               <div className="reviewcontainer">
+                <h4>Where to visit</h4>
+                <hr />
                 {article.touristPlaces.map((review) => {
                   return (
                     <div>
-                      <h4>{review.name}</h4>
+                      <h5>{review.name}</h5>
                       <p>{review.comment}</p>
                       <p>Rating: {review.rating}</p>
                       <div onClick={() => addTouristPlace(review._id)}>
@@ -272,6 +297,7 @@ function ArticleDetails() {
                           </p>
                         )}
                       </div>
+                      <hr />
                     </div>
                   );
                 })}
@@ -322,8 +348,8 @@ export const StyleDetails = styled.div`
     margin: 4px;
   }
 
-  .imgarticle img {
-    width: 40%;
+  img {
+    max-width: 47vw;
   }
 `;
 

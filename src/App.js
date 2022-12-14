@@ -17,22 +17,8 @@ import Start from "./pages/Start";
 import BootstrapCarousel from "./components/BootstrapCarousel";
 
 import { GlobalStyles } from "./components/styled/Global.styled";
-/* import 'bootstrap/dist/css/bootstrap.min.css'; */
 
 function App() {
-  /* const [isAuthenticated, setIsAuthenticated] = useState(
-    () => JSON.parse(localStorage.getItem('auth')) || false
-  );
-  
-  const setAuth = (value) => {
-    setIsAuthenticated(value);
-    //alert(value);
-  };
-  
-  useEffect(()=>{
-    localStorage.setItem("auth", JSON.stringify(isAuthenticated));
-  }, [isAuthenticated]);
- */
   return (
     <div className="App">
       <GlobalStyles />

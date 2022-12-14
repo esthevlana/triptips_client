@@ -57,16 +57,12 @@ const StyleNavBar = styled.nav`
   a {
     text-decoration: none;
     color: white;
+    transform: scale(1);
+    transition: all 0.3s ease-in-out 0.2s;
   }
   a:hover,
   .active {
     color: white;
-  }
-  p {
-    transform: scale(1);
-    transition: all 0.3s ease-in-out 0.2s;
-  }
-  p:hover {
     transform: scale(1.1);
     transition: all 0.3s ease-in-out 0.1s;
     border-bottom: white 1px solid;
@@ -77,7 +73,7 @@ const StyleNavBar = styled.nav`
     background-color: rgba(0, 0, 0, 0.4);
     color: white;
     border: none;
-    padding: 10px;
+    padding: 5px;
     transform: scale(1);
     transition: all 0.3s ease-in-out 0.2s;
   }
