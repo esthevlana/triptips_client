@@ -24,13 +24,6 @@ function App() {
       <GlobalStyles />
       <Navbar />
       <Routes>
-        {/* <Route
-          path="/"
-          element={isAuthenticated
-            ? <HomePage  />
-            : <Navigate to="/start" replace />
-          }
-        /> */}
         <Route
           path="/"
           element={

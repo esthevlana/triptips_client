@@ -4,7 +4,6 @@ import axios from "axios";
 import ArticleCard from "./ArticleCard";
 import { Link, useParams } from "react-router-dom";
 import styled from "styled-components";
-import Carousel from "react-bootstrap/Carousel";
 import { ImLocation2 } from "react-icons/im";
 import BootstrapCarousel from "../components/BootstrapCarousel";
 
