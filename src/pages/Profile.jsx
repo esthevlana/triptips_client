@@ -3,7 +3,6 @@ import { AuthContext } from "../contexts/auth.context";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import styled from "styled-components";
-import service from "../service/service";
 
 function Profile() {
   const { user } = useContext(AuthContext);
@@ -40,25 +39,41 @@ function Profile() {
     <StyledProfile>
       <br />
       <br />
-      <div className="userinfo">
-        {thisUser && (
-          <>
-            <img src={thisUser.imgUser} alt="profilepic" />
-            <h6>Welcome,</h6>
-            <h4>{thisUser.username}</h4>
-            <Link to={`/profile-edit/${user._id}`}> Edit Profile </Link>
-          </>
-        )}
+      <div className="userContainer">
+        
+        <div className="userOverlay">
+            <div className="headerContainer"></div>
+        </div>
+
+        <div className="userinfo">
+          {thisUser && (
+            <>
+              <div className="userInfo-img">
+                <img src={thisUser.imgUser} alt="profilepic" />
+              </div>
+              <div className="userInfo-text">
+                <h6>Welcome, {thisUser.username}</h6>
+                <div className="userInfo-edit">
+                <Link to={`/profile-edit/${user._id}`}>Update</Link>
+              </div>
+              </div>
+            </>
+          )}
+        </div>
         <div className="favInfo">
           <div className="favboxes">
             <h5>Favourited articles</h5>
             {thisUser &&
               thisUser.favArticles &&
               thisUser.favArticles.map((article) => {
-                return <Link to={`/articles/${article._id}`}><p>{article.title}</p></Link>;
+                return (
+                  <Link to={`/articles/${article._id}`}>
+                    <p>{article.title}</p>
+                  </Link>
+                );
               })}
           </div>
-
+    
           <div className="favboxes">
             <h5>Places to eat</h5>
             {thisUser &&
@@ -85,34 +100,78 @@ function Profile() {
                 return <p>{lodging.name}</p>;
               })}
           </div>
+          </div>
         </div>
-      </div>
     </StyledProfile>
   );
 }
 
 const StyledProfile = styled.div`
-  color: black;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  align-content: center;
-  padding-top: 5%;
-
-  .userinfo {
+  .userContainer {
     background-color: rgba(255, 255, 255, 0.3);
-    width: 70vw;
-    border-radius: 3px;
-    padding: 15px 0px 0px 0px;
-    margin: 20px;
-    font-size: 1em;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    width: 80vw;
+    margin: 0 auto;
   }
 
-  img {
-    width: 15vw;
-    margin-bottom: 3%;
+  .headerContainer {
+    height: 50vh;
+    width: 80vw;
+    background-image: url(https://res.cloudinary.com/dymq1r3y9/image/upload/v1678287654/movie-gallery/userheaderimg_gb26ba.jpg);
+    background-size: cover;
+    max-width: 100vw;
+  }
+
+  .userOverlay {
+    width: 100%;
+    height: 50vh;
+    opacity: 0.7;
+  }
+
+  .userinfo {
+    width: 100%;
+    margin: 0 auto;
+    padding: 1rem;
+    font-size: 1em;
+    position: relative;
+    top: -6rem;
+  }
+
+  .userInfo-img img {
+    width: 13vw;
+  }
+
+  .userInfo-text h6 {
+    font-size: 2rem;
+    padding-top: 2rem;
+  }
+
+  .userInfo-edit {
+    background-color: rgba(6, 0, 0, 0.5);
+    max-width: 100%;
+    width: 6vw;
+    height: auto;
+    transition: transform 0.2s;
+    max-width: 100%;
+    margin: 0 auto;
+    display: inline-block;
+    word-break: break-all;
+  }
+
+  .userInfo-edit a {
+    color: white;
+    text-align: center;
+    font-size: 0.9rem;
+  }
+
+  .userInfo-edit:hover {
+    transform: scale(1.05);
+    background-color: rgba(6, 0, 0, 0.5);
   }
 
   h5 {
@@ -120,22 +179,19 @@ const StyledProfile = styled.div`
   }
 
   .favInfo {
-    background-color: olive;
-    border: 1px solid black;
-    border-top-right-radius: 50px;
-    border-top-left-radius: 50px;
     width: 100%;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: space-evenly;
     align-items: center;
     align-content: center;
-    padding: 20px;
+    position: relative;
+    top: -5rem;
   }
 
   .favboxes {
-    width: 25vw;
+    width: 33vw;
     background-color: rgba(255, 255, 255, 0.3);
     margin: 10px;
     padding: 15px;
@@ -145,10 +201,6 @@ const StyledProfile = styled.div`
   a {
     text-decoration: none;
     color: black;
-  }
-
-  a:hover {
-    color: white;
   }
 `;
 

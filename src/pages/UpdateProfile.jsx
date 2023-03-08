@@ -3,7 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import service from "../service/service";
 import { AuthContext } from "../contexts/auth.context";
-import {StyledArticleForm} from '../components/AddArticle';
+import { StyledArticleForm } from "../components/AddArticle";
 
 function UpdateProfile() {
   const [username, setUsername] = useState("");
@@ -32,15 +32,15 @@ function UpdateProfile() {
   }, []);
 
   const handleFileUpload = (e) => {
-         const uploadData = new FormData();
-        uploadData.append("imageUrl", e.target.files[0]);
-        service
-          .uploadImage(uploadData)
-          .then(response => {
-            setImageUrl(response.fileUrl);
-          })
-          .catch(err => console.log("Error while uploading the file: ", err));
-      };
+    const uploadData = new FormData();
+    uploadData.append("imageUrl", e.target.files[0]);
+    service
+      .uploadImage(uploadData)
+      .then((response) => {
+        setImageUrl(response.fileUrl);
+      })
+      .catch((err) => console.log("Error while uploading the file: ", err));
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -50,14 +50,14 @@ function UpdateProfile() {
         `${process.env.REACT_APP_API_URL}/profile-edit/${id}`,
         {
           username,
-           imageUrl,
+          imageUrl,
         },
         {
           headers: { Authorization: `Bearer ${storedToken}` },
         }
       );
-        storeToken(response.data.authToken)
-        authenticateUser();
+      storeToken(response.data.authToken);
+      authenticateUser();
       setUsername("");
       setImageUrl("");
 
@@ -69,23 +69,23 @@ function UpdateProfile() {
 
   return (
     <StyledArticleForm>
-    <div className="EditProfilePage">
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="username">Username</label>
-        <input
-          type="text"
-          name="username"
-          value={username}
-          onChange={handleUsername}
-          placeholder={user.username}
-        />
+      <div className="EditProfilePage">
+        <form onSubmit={handleSubmit}>
+          <label htmlFor="username">Username</label>
+          <input
+            type="text"
+            name="username"
+            value={username}
+            onChange={handleUsername}
+            placeholder={user.username}
+          />
 
-        <label htmlFor='imageUrl'>Profile Photo</label>
-            <input type='file' name='imageUrl'  onChange={handleFileUpload}/>
+          <label htmlFor="imageUrl">Profile Photo</label>
+          <input type="file" name="imageUrl" onChange={handleFileUpload} />
 
-        <button type="submit">Edit Profile</button>
-      </form>
-    </div>
+          <button type="submit">Edit Profile</button>
+        </form>
+      </div>
     </StyledArticleForm>
   );
 }
